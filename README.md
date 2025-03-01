@@ -26,15 +26,15 @@ hisat2-build reference_data/GCF_000146045.2_R64_genomic.fna GCF_000146045
 
 Run `hisat2` in single-end mode
 ```{bash}
-hisat2 -p 3 -x GCF_000146045 -U experiment_data/SRR941816.fastq | samtools sort > hisat_out/SRR941816.fastq.bam
-hisat2 -p 3 -x GCF_000146045 -U experiment_data/SRR941817.fastq | samtools sort > hisat_out/SRR941817.fastq.bam
-hisat2 -p 3 -x GCF_000146045 -U experiment_data/SRR941818.fastq | samtools sort > hisat_out/SRR941818.fastq.bam
-hisat2 -p 3 -x GCF_000146045 -U experiment_data/SRR941819.fastq | samtools sort > hisat_out/SRR941819.fastq.bam
+hisat2 -p 3 -x GCF_000146045 -U data/SRR941816.fastq | samtools sort > hisat_out/SRR941816.fastq.bam
+hisat2 -p 3 -x GCF_000146045 -U data/SRR941817.fastq | samtools sort > hisat_out/SRR941817.fastq.bam
+hisat2 -p 3 -x GCF_000146045 -U data/SRR941818.fastq | samtools sort > hisat_out/SRR941818.fastq.bam
+hisat2 -p 3 -x GCF_000146045 -U data/SRR941819.fastq | samtools sort > hisat_out/SRR941819.fastq.bam
 ```
 
 ### b) Quantifying with featureCounts
 
-Convert from GFF to GTF using gffread.
+Convert from GFF to GTF using `gffread`.
 ```{bash}
 conda install gffread 
 gffread reference_data/GCF_000146045.2_R64_genomic.gff -T -o reference_data/GCF_000146045.2_R64_genomic.gtf
@@ -68,9 +68,8 @@ cat simple_counts_16_19.txt | R -f deseq2.r
 Run `deseq2.r` script in RStudio
 
 When run `draw-heatmap.r` script on `norm-matrix-deseq.txt` file in RStudio 
-<br>
 <div style="display: flex; gap: 10px; align-items: center;">
-    <img src="data/heatmap.png" width="400">
+    <img src="data/heatmap.png" width="700">
 </div>
 <br>
 
@@ -82,9 +81,8 @@ head -n 50 result.txt | cut -f 1 | cut -d "-" -f 2 > genes.txt
 ```
 
 Load `result.txt` data into `goSlimMapper`:
-<br>
 <div style="display: flex; gap: 10px; align-items: center;">
-    <img src="data/settings.png" width="400">
+    <img src="data/settings.png" width="700">
 </div>
 <br>
 
